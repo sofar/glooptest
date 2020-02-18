@@ -4,7 +4,7 @@ GloopTest :D *insert witty comment here*
 
 Adds a collection of things into minetest. As it stands, this adds three different modules.
 
-More (or possibly (most likely) less) imformation can be found here: http://minetest.net/forum/viewtopic.php?id=4345
+More (or possibly (most likely) less) information can be found here: http://minetest.net/forum/viewtopic.php?id=4345
 
 --==--==--
 
