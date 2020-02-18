@@ -1,56 +1,16 @@
-function glooptest.ore_module.set_tool_recipe(modname,type,material,name)
-	if type == "sword" then
-		minetest.register_craft({
-			recipe = {{material},{material},{"default:stick"}},
-			output = modname..":sword_"..name,
-		})
-	end
-	if type == "axe" then
-		minetest.register_craft({
-			recipe = {{material, material}, {material, "default:stick"}, {"","default:stick"}},
-			output = modname..":axe_"..name,
-		})
-		minetest.register_craft({
-			recipe = {{material, material}, {"default:stick", material}, {"default:stick", ""}},
-			output = modname..":axe_"..name,
-		})
-	end
-	if type == "pick" or type == "pickaxe" then
-		minetest.register_craft({
-			recipe = {{material, material, material}, {"","default:stick",""}, {"","default:stick",""}},
-			output = modname..":pick_"..name,
-		})
-	end
-	if type == "shovel" then
-		minetest.register_craft({
-			recipe = {{material},{"default:stick"},{"default:stick"}},
-			output = modname..":shovel_"..name,
-		})
-	end
-	if type == "handsaw" then
-		minetest.register_craft({
-			recipe = {{material, "default:stick"},{material, "default:stick"},{"", "default:stick"}},
-			output = modname..":handsaw_"..name,
-		})
-		minetest.register_craft({
-			recipe = {{"default:stick", material},{"default:stick", material},{"default:stick", ""}},
-			output = modname..":handsaw_"..name,
-		})
-	end
-	if type == "hammer" then
-		minetest.register_craft({
-			recipe = {{material, "default:stick", material}, {material, "default:stick", material}, {"", "default:stick", ""}},
-			output = modname..":hammer_"..name,
-		})
-	end
-end
-
+local S = minetest.get_translator("glooptest")
 generation_ores = {}
 
 function glooptest.ore_module.register_ore(modname, name, desc, uses)
+	-- `desc` parameter is keep for backward compatibility
+	-- newer uses of this function must not use this parameter and must
+	-- set appropriate fully localized descriptions in `uses`.
+
+	-- register block
 	if uses.block ~= nil and uses.block.makes ~= false then
 		minetest.register_node(modname..":"..name.."block", {
-			description = desc.." Block",
+			-- Use fully localized description unless desc is set (backward compatibility)
+			description = desc and (desc.." Block") or uses.block.desc,
 			tiles = {uses.block.texture},
 			is_ground_content = true,
 			light_source = uses.block.light or 0,
@@ -74,9 +34,11 @@ function glooptest.ore_module.register_ore(modname, name, desc, uses)
 			})
 		end
 	end
+	-- register ore
 	if uses.ore ~= nil and uses.ore.makes ~= false then
 		minetest.register_node(modname..":mineral_"..name, {
-			description = desc.." Ore",
+			-- Use fully localized description unless desc is set (backward compatibility)
+			description = desc and (desc.." Ore") or uses.ore.desc,
 			tiles = {uses.ore.texture.base.."^"..uses.ore.texture.overlay},
 			is_ground_content = true,
 			drop = uses.ore.drop,
@@ -95,15 +57,21 @@ function glooptest.ore_module.register_ore(modname, name, desc, uses)
 			y_max     = uses.ore.generate.maxy,
 		})
 	end
+	-- register lump
 	if uses.lump ~= nil and uses.lump.makes ~= false then
 		minetest.register_craftitem(modname..":"..name.."_"..uses.lump.name, {
-			description = desc.." "..uses.lump.desc,
+			-- Use fully localized description unless desc is set
+			-- or uses.lump.desc is equals to "Lump" (backward compatibility)
+			description = (uses.lump.desc == "Lump" or desc)
+				and (desc.." "..uses.lump.desc) or uses.lump.desc,
 			inventory_image = uses.lump.texture,
 		})
 	end
+	-- register ingot
 	if uses.ingot ~= nil and uses.ingot.makes ~= false then
 		minetest.register_craftitem(modname..":"..name.."_ingot", {
-			description = desc.." Ingot",
+			-- Use fully localized description unless desc is set (backward compatibility)
+			description = desc and (desc.." Ingot") or uses.ingot.desc,
 			inventory_image = uses.ingot.texture,
 		})
 		if uses.ingot.smeltrecipe == true and uses.lump ~= nil then
@@ -114,39 +82,15 @@ function glooptest.ore_module.register_ore(modname, name, desc, uses)
 			})
 		end
 	end
-	if uses.tools ~= nil and uses.tools.make ~= nil then
-		if uses.tools.make.sword == true then
-			minetest.register_tool(modname..":sword_"..name, {
-				description = desc.." Sword",
-				inventory_image = uses.tools.texture.sword,
-				tool_capabilities = uses.tools.caps.sword,
-			})
-			glooptest.ore_module.set_tool_recipe(modname,"sword",modname..":"..name.."_ingot",name)
+	-- register tools
+	if glooptest.modules.tools and (uses.tools ~= nil) and (uses.tools.makes ~= nil) then
+		local u = {}
+		for tool, value in pairs(uses.tools.makes) do
+			u[tool].makes = value
+			u[tool].texture = uses.tools.texture[tool] or nil
+			u[tool].caps = uses.tools.caps[tool] or nil
+			u[tool].desc = uses.tools.desc[tool] or nil
 		end
-		if uses.tools.make.axe == true then
-			minetest.register_tool(modname..":axe_"..name, {
-				description = desc.." Axe",
-				inventory_image = uses.tools.texture.axe,
-				tool_capabilities = uses.tools.caps.axe,
-			})
-			glooptest.ore_module.set_tool_recipe(modname,"axe",modname..":"..name.."_ingot",name)
-		end
-		if uses.tools.make.pick == true then
-			minetest.register_tool(modname..":pick_"..name, {
-				description = desc.." Pickaxe",
-				inventory_image = uses.tools.texture.pick,
-				tool_capabilities = uses.tools.caps.pick,
-			})
-			glooptest.ore_module.set_tool_recipe(modname,"pick",modname..":"..name.."_ingot",name)
-		end
-		if uses.tools.make.shovel == true then
-			minetest.register_tool(modname..":shovel_"..name, {
-				description = desc.." Shovel",
-				inventory_image = uses.tools.texture.shovel,
-				wield_image = uses.tools.texture.shovel.."^[transformR90",
-				tool_capabilities = uses.tools.caps.shovel,
-			})
-			glooptest.ore_module.set_tool_recipe(modname,"shovel",modname..":"..name.."_ingot",name)
-		end
+		glooptest.tools_module.register_tools(modname, name, desc, u)
 	end
 end

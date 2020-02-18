@@ -2,8 +2,9 @@ glooptest.tools_module = {}
 glooptest.debug("MESSAGE","Loading Tools Module Now!")
 
 dofile(minetest.get_modpath("glooptest").."/tools_module/api.lua")
+local S = minetest.get_translator("glooptest")
 
-glooptest.tools_module.register_tools("glooptest", "wood", "Wooden", "group:wood", {
+glooptest.tools_module.register_tools("glooptest", "wood", nil, "group:wood", {
 	handsaw = {
 		makes = true,
 		texture = "glooptest_tool_woodhandsaw.png",
@@ -16,6 +17,7 @@ glooptest.tools_module.register_tools("glooptest", "wood", "Wooden", "group:wood
 			},
 			damage_groups = {fleshy=2, snappy=3},
 		},
+		desc = S("Wooden Handsaw"),
 	},
 	hammer = {
 		makes = true,
@@ -29,10 +31,11 @@ glooptest.tools_module.register_tools("glooptest", "wood", "Wooden", "group:wood
 			},
 			damage_groups = {fleshy=2, bendy=2, cracky=1},
 		},
+		desc = S("Wooden Hammer"),
 	},
 })
 
-glooptest.tools_module.register_tools("glooptest", "stone", "Stone", "group:stone", {
+glooptest.tools_module.register_tools("glooptest", "stone", nil, "group:stone", {
 	handsaw = {
 		makes = true,
 		texture = "glooptest_tool_stonehandsaw.png",
@@ -45,6 +48,7 @@ glooptest.tools_module.register_tools("glooptest", "stone", "Stone", "group:ston
 			},
 			damage_groups = {fleshy=3, snappy=3},
 		},
+		desc = S("Stone Handsaw"),
 	},
 	hammer = {
 		makes = true,
@@ -58,10 +62,11 @@ glooptest.tools_module.register_tools("glooptest", "stone", "Stone", "group:ston
 			},
 			damage_groups = {fleshy=2, bendy=2, cracky=1},
 		},
+		desc = S("Stone Hammer"),
 	},
 })
 
-glooptest.tools_module.register_tools("glooptest", "steel", "Steel", "default:steel_ingot", {
+glooptest.tools_module.register_tools("glooptest", "steel", nil, "default:steel_ingot", {
 	handsaw = {
 		makes = true,
 		texture = "glooptest_tool_steelhandsaw.png",
@@ -74,6 +79,7 @@ glooptest.tools_module.register_tools("glooptest", "steel", "Steel", "default:st
 			},
 			damage_groups = {fleshy=4, snappy=5},
 		},
+		desc = S("Steel Handsaw")
 	},
 	hammer = {
 		makes = true,
@@ -87,10 +93,11 @@ glooptest.tools_module.register_tools("glooptest", "steel", "Steel", "default:st
 			},
 			damage_groups = {fleshy=3, bendy=3, cracky=2},
 		},
+		desc = S("Steel Hammer"),
 	},
 })
 
-glooptest.tools_module.register_tools("glooptest", "bronze", "Bronze", "default:bronze_ingot", {
+glooptest.tools_module.register_tools("glooptest", "bronze", nil, "default:bronze_ingot", {
 	handsaw = {
 		makes = true,
 		texture = "glooptest_tool_bronzehandsaw.png",
@@ -103,6 +110,7 @@ glooptest.tools_module.register_tools("glooptest", "bronze", "Bronze", "default:
 			},
 			damage_groups = {fleshy=4, snappy=5},
 		},
+		desc = S("Bronze Handsaw"),
 	},
 	hammer = {
 		makes = true,
@@ -116,10 +124,11 @@ glooptest.tools_module.register_tools("glooptest", "bronze", "Bronze", "default:
 			},
 			damage_groups = {fleshy=3, bendy=3, cracky=2},
 		},
+		desc = S("Bronze Hammer"),
 	},
 })
 
-glooptest.tools_module.register_tools("glooptest", "mese", "Mese", "default:mese_crystal", {
+glooptest.tools_module.register_tools("glooptest", "mese", nil, "default:mese_crystal", {
 	handsaw = {
 		makes = true,
 		texture = "glooptest_tool_mesehandsaw.png",
@@ -132,6 +141,7 @@ glooptest.tools_module.register_tools("glooptest", "mese", "Mese", "default:mese
 			},
 			damage_groups = {fleshy=5, snappy=6},
 		},
+		desc = S("Mese Handsaw"),
 	},
 	hammer = {
 		makes = true,
@@ -145,10 +155,11 @@ glooptest.tools_module.register_tools("glooptest", "mese", "Mese", "default:mese
 			},
 			damage_groups = {fleshy=4, bendy=4, cracky=2},
 		},
+		desc = S("Mese Hammer"),
 	},
 })
 
-glooptest.tools_module.register_tools("glooptest", "diamond", "Diamond", "default:diamond", {
+glooptest.tools_module.register_tools("glooptest", "diamond", nil, "default:diamond", {
 	handsaw = {
 		makes = true,
 		texture = "glooptest_tool_diamondhandsaw.png",
@@ -161,6 +172,7 @@ glooptest.tools_module.register_tools("glooptest", "diamond", "Diamond", "defaul
 			},
 			damage_groups = {fleshy=5, snappy=7},
 		},
+		desc = S("Diamond Handsaw"),
 	},
 	hammer = {
 		makes = true,
@@ -174,11 +186,12 @@ glooptest.tools_module.register_tools("glooptest", "diamond", "Diamond", "defaul
 			},
 			damage_groups = {fleshy=4, bendy=5, cracky=2},
 		},
+		desc = S("Diamond Hammer"),
 	},
 })
 
-if LOAD_ORE_MODULE == true then
-	glooptest.tools_module.register_tools("glooptest", "alatro", "Alatro", "glooptest:alatro_ingot", {
+if glooptest.load_ore_module == true then
+	glooptest.tools_module.register_tools("glooptest", "alatro", nil, "glooptest:alatro_ingot", {
 		handsaw = {
 			makes = true,
 			texture = "glooptest_tool_alatrohandsaw.png",
@@ -191,6 +204,7 @@ if LOAD_ORE_MODULE == true then
 				},
 				damage_groups = {fleshy=3, snappy=3},
 			},
+			desc = S("Alatro Handsaw"),
 		},
 		hammer = {
 			makes = true,
@@ -204,9 +218,10 @@ if LOAD_ORE_MODULE == true then
 				},
 				damage_groups = {fleshy=2, bendy=2, cracky=1},
 			},
+			desc = S("Alatro Hammer"),
 		},
 	})
-	glooptest.tools_module.register_tools("glooptest", "arol", "Arol", "glooptest:arol_ingot", {
+	glooptest.tools_module.register_tools("glooptest", "arol", nil, "glooptest:arol_ingot", {
 		handsaw = {
 			makes = true,
 			texture = "glooptest_tool_arolhandsaw.png",
@@ -219,6 +234,7 @@ if LOAD_ORE_MODULE == true then
 				},
 				damage_groups = {fleshy=3, snappy=3},
 			},
+			desc = S("Arol Handsaw"),
 		},
 		hammer = {
 			makes = true,
@@ -232,6 +248,7 @@ if LOAD_ORE_MODULE == true then
 				},
 				damage_groups = {fleshy=2, bendy=2, cracky=1},
 			},
+			desc = S("Arol Hammer"),
 		},
 	})
 end

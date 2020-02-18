@@ -2,6 +2,7 @@ glooptest.ore_module = {}
 glooptest.debug("MESSAGE","Loading Ore Module Now!")
 
 local stone_sounds = default.node_sound_stone_defaults()
+local S = minetest.get_translator("glooptest")
 
 dofile(minetest.get_modpath("glooptest").."/ore_module/api.lua")
 
@@ -10,7 +11,7 @@ dofile(minetest.get_modpath("glooptest").."/ore_module/api.lua")
 -- The textures for non-gem ores are thus CC-BY-SA, with respect to celeron55/erlehmann
 -- Suck it, minetest community.
 
-glooptest.ore_module.register_ore("glooptest", "kalite", "Kalite", {
+glooptest.ore_module.register_ore("glooptest", "kalite", nil, {
 	ore = {
 		makes = true, 
 		drop = {
@@ -43,17 +44,18 @@ glooptest.ore_module.register_ore("glooptest", "kalite", "Kalite", {
 			miny = -31000,
 			maxy = 10
 		},
+		desc = S("Kalite Ore"),
 	},
 })
 
 minetest.register_craftitem("glooptest:kalite_lump", {
-	description = "Kalite Lump",
+	description = S("Kalite Lump"),
 	inventory_image = "gloopores_kalite_lump.png",
 	on_use = minetest.item_eat(1),
 })
 
 minetest.register_node("glooptest:kalite_torch", {
-	description = "Kalite Torch",
+	description = S("Kalite Torch"),
 	drawtype = "torchlike",
 	tiles = {
 		{name="gloopores_kalite_torch_on_floor_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
@@ -92,7 +94,7 @@ minetest.register_craft({
 	burntime = 30,
 })
 
-glooptest.ore_module.register_ore("glooptest", "alatro", "Alatro", {
+glooptest.ore_module.register_ore("glooptest", "alatro", nil, {
 	ore = {
 		makes = true,
 		drop = "glooptest:alatro_lump",
@@ -110,37 +112,51 @@ glooptest.ore_module.register_ore("glooptest", "alatro", "Alatro", {
 			miny = 0,
 			maxy = 256
 		},
+		desc = S("Alatro Ore")
 	},
 	lump = {
 		makes = true,
 		name = "lump",
-		desc = "Lump",
+		desc = S("Alatro Lump"),
 		texture = "gloopores_alatro_lump.png"
 	},
 	ingot = {
 		makes = true,
 		texture = "gloopores_alatro_ingot.png",
-		smeltrecipe = true
+		smeltrecipe = true,
+		desc = S("Alatro Ingot"),
 	},
 	block = {
 		makes = true,
 		texture = "gloopores_alatro_block.png",
 		groups = {snappy=1,bendy=2,cracky=1,melty=2,level=2},
 		sounds = stone_sounds,
-		fromingots = true
+		fromingots = true,
+		desc = S("Alatro Block"),
 	},
 	tools = {
 		make = {
 			sword = true,
 			axe = true,
 			pick = true,
-			shovel = true
+			shovel = true,
+			handsaw = true,
+			hammer = true,
+		},
+		desc = {
+			sword = S("Alatro Sword"),
+			axe = S("Alatro Axe"),
+			pick = S("Alatro Pickaxe"),
+			handsaw = S("Alatro Handsaw"),
+			hammer = S("Alatro Hammer"),
 		},
 		texture = {
 			sword = "gloopores_tool_alatrosword.png",
 			axe = "gloopores_tool_alatroaxe.png",
 			pick = "gloopores_tool_alatropick.png",
-			shovel = "gloopores_tool_alatroshovel.png"
+			shovel = "gloopores_tool_alatroshovel.png",
+			handsaw = "glooptest_tool_alatrohandsaw.png",
+			hammer = "glooptest_tool_alatrohammer.png",
 		},
 		caps = {
 			sword = {
@@ -178,11 +194,29 @@ glooptest.ore_module.register_ore("glooptest", "alatro", "Alatro", {
 				},
 				damage_groups = {fleshy=3},
 			},
+			handsaw = {
+				full_punch_interval = 1.0,
+				max_drop_level = 0,
+				groupcaps = {
+					snappy = {times={[2]=0.70, [3]=0.30}, uses=40, maxlevel=1},
+					fleshy = {times={[3]=0.65}, uses=40, maxlevel=0}
+				},
+				damage_groups = {fleshy=3, snappy=3},
+			},
+			hammer = {
+				full_punch_interval = 1.0,
+				max_drop_level = 0,
+				groupcaps = {
+					bendy = {times={[2]=0.85, [3]=0.55}, uses=40, maxlevel=1},
+					cracky = {times={[3]=0.95}, uses=40, maxlevel=0}
+				},
+				damage_groups = {fleshy=2, bendy=2, cracky=1},
+			},
 		}
 	}
 })
 
-glooptest.ore_module.register_ore("glooptest", "talinite", "Talinite", {
+glooptest.ore_module.register_ore("glooptest", "talinite", nil, {
 	ore = {
 		makes = true,
 		drop = "glooptest:talinite_lump",
@@ -200,18 +234,20 @@ glooptest.ore_module.register_ore("glooptest", "talinite", "Talinite", {
 			max_blocks_per_chunk = 4,
 			miny = -31000,
 			maxy = -250
-		}
+		},
+		desc = S("Talinite Ore"),
 	},
 	lump = {
 		makes = true,
 		name = "lump",
-		desc = "Lump",
+		desc = S("Talinite Lump"),
 		texture = "gloopores_talinite_lump.png"
 	},
 	ingot = {
 		makes = true,
 		texture = "gloopores_talinite_ingot.png",
-		smeltrecipe = true
+		smeltrecipe = true,
+		desc = S("Talinite Ingot"),
 	},
 	block = {
 		makes = true,
@@ -219,11 +255,12 @@ glooptest.ore_module.register_ore("glooptest", "talinite", "Talinite", {
 		groups = {snappy=1,bendy=2,cracky=1,melty=2,level=2},
 		sounds = stone_sounds,
 		light = 14,
-		fromingots = true
+		fromingots = true,
+		desc = S("Talinite Block"),
 	}
 })
 
-glooptest.ore_module.register_ore("glooptest", "akalin", "Akalin", {
+glooptest.ore_module.register_ore("glooptest", "akalin", nil, {
 	ore = {
 		makes = true,
 		drop = "glooptest:akalin_lump",
@@ -240,29 +277,32 @@ glooptest.ore_module.register_ore("glooptest", "akalin", "Akalin", {
 			max_blocks_per_chunk = 9,
 			miny = 0,
 			maxy = 256
-		}
+		},
+		desc = S("Akalin Ore"),
 	},
 	lump = {
 		makes = true,
 		name = "lump",
-		desc = "Lump",
-		texture = "gloopores_akalin_lump.png"
+		desc = S("Akalin Lump"),
+		texture = "gloopores_akalin_lump.png",
 	},
 	ingot = {
 		makes = true,
 		texture = "gloopores_akalin_ingot.png",
-		smeltrecipe = true
+		smeltrecipe = true,
+		desc = S("Akalin Ingot")
 	},
 	block = {
 		makes = true,
 		texture = "gloopores_akalin_block.png",
 		groups = {snappy=1,bendy=2,cracky=1,melty=2,level=2},
 		sounds = stone_sounds,
-		fromingots = true
+		fromingots = true,
+		desc = S("Akalin Block"),
 	}
 })
 
-glooptest.ore_module.register_ore("glooptest", "arol", "Arol", {
+glooptest.ore_module.register_ore("glooptest", "arol", nil, {
 	ore = {
 		makes = true,
 		drop = "glooptest:arol_lump",
@@ -279,31 +319,45 @@ glooptest.ore_module.register_ore("glooptest", "arol", "Arol", {
 			max_blocks_per_chunk = 2,
 			miny = -31000,
 			maxy = -20
-		}
+		},
+		desc = S("Arol Ore"),
 	},
 	lump = {
 		makes = true,
 		name = "lump",
-		desc = "Lump",
+		desc = S("Arol Lump"),
 		texture = "gloopores_arol_lump.png"
 	},
 	ingot = {
 		makes = true,
 		texture = "gloopores_arol_ingot.png",
-		smeltrecipe = true
+		smeltrecipe = true,
+		desc = S("Arol Ingot"),
 	},
 	tools = {
 		make = {
 			sword = true,
 			axe = true,
 			pick = true,
-			shovel = true
+			shovel = true,
+			handsaw = true,
+			hammer = true,
+		},
+		desc = {
+			sword = S("Arol Sword"),
+			axe = S("Arol Axe"),
+			pick = S("Arol Pickaxe"),
+			shovel = S("Arol Shovel"),
+			handsaw = S("Arol Handsaw"),
+			hammer = S("Arol Hammer"),
 		},
 		texture = {
 			sword = "gloopores_tool_arolsword.png",
 			axe = "gloopores_tool_arolaxe.png",
 			pick = "gloopores_tool_arolpick.png",
-			shovel = "gloopores_tool_arolshovel.png"
+			shovel = "gloopores_tool_arolshovel.png",
+			handsaw = "glooptest_tool_arolhandsaw.png",
+			hammer = "glooptest_tool_arolhammer.png",
 		},
 		caps = {
 			sword = {
@@ -340,12 +394,30 @@ glooptest.ore_module.register_ore("glooptest", "arol", "Arol", {
 					crumbly = {times={[1]=2.70, [2]=1.45, [3]=0.85}, uses=300, maxlevel=2}
 				},
 				damage_groups = {fleshy=3},
-			}
+			},
+			handsaw = {
+				full_punch_interval = 0.5,
+				max_drop_level = 0,
+				groupcaps = {
+					snappy = {times={[2]=1.00, [3]=0.80}, uses=300, maxlevel=1},
+					fleshy = {times={[3]=1.20}, uses=300, maxlevel=0}
+				},
+				damage_groups = {fleshy=3, snappy=3},
+			},
+			hammer = {
+				full_punch_interval = 0.5,
+				max_drop_level = 0,
+				groupcaps = {
+					bendy = {times={[2]=1.65, [3]=1.00}, uses=300, maxlevel=1},
+					cracky = {times={[3]=1.65}, uses=300, maxlevel=0}
+				},
+				damage_groups = {fleshy=2, bendy=2, cracky=1},
+			},
 		}
 	}
 })
 
-glooptest.ore_module.register_ore("glooptest", "desert_iron", "Desert Iron", {
+glooptest.ore_module.register_ore("glooptest", "desert_iron", nil, {
 	ore = {
 		makes = true, 
 		drop = "default:iron_lump", 
@@ -363,10 +435,11 @@ glooptest.ore_module.register_ore("glooptest", "desert_iron", "Desert Iron", {
 			miny = 0,
 			maxy = 10
 		},
+		desc = S("Desert Iron"),
 	},
 })
 
-glooptest.ore_module.register_ore("glooptest", "desert_coal", "Desert Coal", {
+glooptest.ore_module.register_ore("glooptest", "desert_coal", nil, {
 	ore = {
 		makes = true, 
 		drop = "default:coal_lump", 
@@ -384,12 +457,13 @@ glooptest.ore_module.register_ore("glooptest", "desert_coal", "Desert Coal", {
 			miny = 0,
 			maxy = 30
 		},
+		desc = S("Desert Coal"),
 	},
 })
 
 -- gems
 
-glooptest.ore_module.register_ore("glooptest", "ruby", "Ruby", {
+glooptest.ore_module.register_ore("glooptest", "ruby", nil, {
 	ore = {
 		makes = true, 
 		drop = "glooptest:ruby_gem",
@@ -407,18 +481,20 @@ glooptest.ore_module.register_ore("glooptest", "ruby", "Ruby", {
 			miny = -3000,
 			maxy = -30
 		},
+		desc = S("Ruby Ore"),
 	},
 	block = {
 		makes = true,
 		texture = "glooptest_ruby_block.png",
 		groups = {bendy=3,cracky=2,level=1},
 		sounds = stone_sounds,
-		fromingots = false
+		fromingots = false,
+		desc = S("Ruby Block"),
 	}
 })
 
 minetest.register_craftitem("glooptest:ruby_gem", {
-	description = "Ruby",
+	description = S("Ruby"),
 	inventory_image = "glooptest_gem_ruby.png",
 	groups = {glooptest_gem=1},
 })
@@ -437,7 +513,7 @@ minetest.register_craft({
 	}
 })
 
-glooptest.ore_module.register_ore("glooptest", "sapphire", "Sapphire", {
+glooptest.ore_module.register_ore("glooptest", "sapphire", nil, {
 	ore = {
 		makes = true, 
 		drop = "glooptest:sapphire_gem",
@@ -455,18 +531,20 @@ glooptest.ore_module.register_ore("glooptest", "sapphire", "Sapphire", {
 			miny = -3000,
 			maxy = -30
 		},
+		desc = S("Sapphire Ore"),
 	},
 	block = {
 		makes = true,
 		texture = "glooptest_sapphire_block.png",
 		groups = {bendy=3,cracky=2,level=1},
 		sounds = stone_sounds,
-		fromingots = false
+		fromingots = false,
+		desc = S("Sapphire Block"),
 	}
 })
 
 minetest.register_craftitem("glooptest:sapphire_gem", {
-	description = "Sapphire",
+	description = S("Sapphire"),
 	inventory_image = "glooptest_gem_sapphire.png",
 	groups = {glooptest_gem=1},
 })
@@ -485,7 +563,7 @@ minetest.register_craft({
 	}
 })
 
-glooptest.ore_module.register_ore("glooptest", "emerald", "Emerald", {
+glooptest.ore_module.register_ore("glooptest", "emerald", nil, {
 	ore = {
 		makes = true, 
 		drop = "glooptest:emerald_gem",
@@ -503,18 +581,20 @@ glooptest.ore_module.register_ore("glooptest", "emerald", "Emerald", {
 			miny = -5000,
 			maxy = -70
 		},
+		desc = S("Emerald Ore"),
 	},
 	block = {
 		makes = true,
 		texture = "glooptest_emerald_block.png",
 		groups = {bendy=3,cracky=2,level=1},
 		sounds = stone_sounds,
-		fromingots = false
+		fromingots = false,
+		desc = S("Emerald Block"),
 	}
 })
 
 minetest.register_craftitem("glooptest:emerald_gem", {
-	description = "Emerald",
+	description = S("Emerald"),
 	inventory_image = "glooptest_gem_emerald.png",
 	groups = {glooptest_gem=1},
 })
@@ -533,7 +613,7 @@ minetest.register_craft({
 	}
 })
 
-glooptest.ore_module.register_ore("glooptest", "topaz", "Topaz", {
+glooptest.ore_module.register_ore("glooptest", "topaz", nil, {
 	ore = {
 		makes = true, 
 		drop = "glooptest:topaz_gem",
@@ -551,18 +631,20 @@ glooptest.ore_module.register_ore("glooptest", "topaz", "Topaz", {
 			miny = -5000,
 			maxy = -70
 		},
+		desc = S("Topaz Ore"),
 	},
 	block = {
 		makes = true,
 		texture = "glooptest_topaz_block.png",
 		groups = {bendy=3,cracky=2,level=1},
 		sounds = stone_sounds,
-		fromingots = false
+		fromingots = false,
+		desc = S("Topaz Block"),
 	}
 })
 
 minetest.register_craftitem("glooptest:topaz_gem", {
-	description = "Topaz",
+	description = S("Topaz"),
 	inventory_image = "glooptest_gem_topaz.png",
 	groups = {glooptest_gem=1},
 })
@@ -581,7 +663,7 @@ minetest.register_craft({
 	}
 })
 
-glooptest.ore_module.register_ore("glooptest", "amethyst", "Amethyst", {
+glooptest.ore_module.register_ore("glooptest", "amethyst", nil, {
 	ore = {
 		makes = true, 
 		drop = "glooptest:amethyst_gem",
@@ -599,18 +681,20 @@ glooptest.ore_module.register_ore("glooptest", "amethyst", "Amethyst", {
 			miny = -31000,
 			maxy = -128
 		},
+		desc = S("Amethyst Ore"),
 	},
 	block = {
 		makes = true,
 		texture = "glooptest_amethyst_block.png",
 		groups = {bendy=3,cracky=2,level=1},
 		sounds = stone_sounds,
-		fromingots = false
+		fromingots = false,
+		desc = S("Amethyst Block"),
 	}
 })
 
 minetest.register_craftitem("glooptest:amethyst_gem", {
-	description = "Amethyst",
+	description = S("Amethyst"),
 	inventory_image = "glooptest_gem_amethyst.png",
 	groups = {glooptest_gem=1},
 })
