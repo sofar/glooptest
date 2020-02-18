@@ -69,3 +69,20 @@ Topaz=
 Amethyst Ore=
 Amethyst Block=
 Amethyst=
+
+## othergen
+Treasure Chest Rank @1=
+
+## parts
+Crystal Glass=
+Steel-Reinforced Crystal Glass=
+Akalin-Reinforced Crystal Glass=
+Heavily Reinforced Crystal Glass=
+Alatro-Reinforced Crystal Glass=
+Arol-Reinforced Crystal Glass=
+Talinite-Reinforced Crystal Glass=
+
+## tech
+Wooden Table=
+Upgrade Core=
+Encrusting Upgrade=

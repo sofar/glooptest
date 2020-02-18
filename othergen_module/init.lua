@@ -1,6 +1,7 @@
 glooptest.extragen_module = {}
 glooptest.extragen_module.treasure={}
 glooptest.debug("MESSAGE","Loading Extragen Module Now!")
+local S = minetest.get_translator("glooptest")
 
 -- {item name, max stack size, item rarity}
 glooptest.extragen_module.treasure[1] = {
@@ -135,200 +136,46 @@ glooptest.extragen_module.register_chest_loot(5, {"glooptest:hammer_mese", 1, 12
 glooptest.extragen_module.register_chest_loot(5, {"glooptest:handsaw_diamond", 1, 60})
 glooptest.extragen_module.register_chest_loot(5, {"glooptest:hammer_diamond", 1, 60})
 
-minetest.register_node("glooptest:treasure_chest_1", {
-	description = "Treasure Chest Rank 1",
-	drawtype = "nodebox",
-	tiles = {"default_chest_top.png", "default_chest_top.png", "default_chest_side.png",
-		"default_chest_side.png", "default_chest_side.png", "default_chest_front.png"},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	drop = "",
-	groups = {choppy=2,oddly_breakable_by_hand=2},
-	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
-	node_box = {
-		type = "fixed",
-		fixed = treasure_chest_nodebox,
-	},
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec",treasure_chest_formspec)
-		meta:set_string("infotext", "Treasure Chest Rank I")
-		local inv = meta:get_inventory()
-		inv:set_size("main", 32)
-		treasure_chest_populate(1, pos)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
-	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		glooptest.debug("ACTION", player:get_player_name().." moves items in R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		glooptest.debug("ACTION", player:get_player_name().." moves items in R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		glooptest.debug("ACTION", player:get_player_name().." takes items from R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-})
-
-minetest.register_node("glooptest:treasure_chest_2", {
-	description = "Treasure Chest Rank 2",
-	drawtype = "nodebox",
-	tiles = {"default_chest_top.png", "default_chest_top.png", "default_chest_side.png",
-		"default_chest_side.png", "default_chest_side.png", "default_chest_front.png"},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	drop = "",
-	groups = {choppy=2,oddly_breakable_by_hand=2},
-	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
-	node_box = {
-		type = "fixed",
-		fixed = treasure_chest_nodebox,
-	},
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec",treasure_chest_formspec)
-		meta:set_string("infotext", "Treasure Chest Rank II")
-		local inv = meta:get_inventory()
-		inv:set_size("main", 32)
-		treasure_chest_populate(2, pos)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
-	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		glooptest.debug("ACTION", player:get_player_name().." moves items in R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		glooptest.debug("ACTION", player:get_player_name().." moves items in R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		glooptest.debug("ACTION", player:get_player_name().." takes items from R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-})
-
-minetest.register_node("glooptest:treasure_chest_3", {
-	description = "Treasure Chest Rank 3",
-	drawtype = "nodebox",
-	tiles = {"default_chest_top.png", "default_chest_top.png", "default_chest_side.png",
-		"default_chest_side.png", "default_chest_side.png", "default_chest_front.png"},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	drop = "",
-	groups = {choppy=2,oddly_breakable_by_hand=2},
-	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
-	node_box = {
-		type = "fixed",
-		fixed = treasure_chest_nodebox,
-	},
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec",treasure_chest_formspec)
-		meta:set_string("infotext", "Treasure Chest Rank III")
-		local inv = meta:get_inventory()
-		inv:set_size("main", 32)
-		treasure_chest_populate(3, pos)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
-	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		glooptest.debug("ACTION", player:get_player_name().." moves items in R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		glooptest.debug("ACTION", player:get_player_name().." moves items in R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		glooptest.debug("ACTION", player:get_player_name().." takes items from R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-})
-
-minetest.register_node("glooptest:treasure_chest_4", {
-	description = "Treasure Chest Rank 4",
-	drawtype = "nodebox",
-	tiles = {"default_chest_top.png", "default_chest_top.png", "default_chest_side.png",
-		"default_chest_side.png", "default_chest_side.png", "default_chest_front.png"},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	drop = "",
-	groups = {choppy=2,oddly_breakable_by_hand=2},
-	node_box = {
-		type = "fixed",
-		fixed = treasure_chest_nodebox,
-	},
-	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec",treasure_chest_formspec)
-		meta:set_string("infotext", "Treasure Chest Rank IV")
-		local inv = meta:get_inventory()
-		inv:set_size("main", 32)
-		treasure_chest_populate(4, pos)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
-	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		glooptest.debug("ACTION", player:get_player_name().." moves items in R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		glooptest.debug("ACTION", player:get_player_name().." moves items in R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		glooptest.debug("ACTION", player:get_player_name().." takes items from R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-})
-
-minetest.register_node("glooptest:treasure_chest_5", {
-	description = "Treasure Chest Rank 5",
-	drawtype = "nodebox",
-	tiles = {"default_chest_top.png", "default_chest_top.png", "default_chest_side.png",
-		"default_chest_side.png", "default_chest_side.png", "default_chest_front.png"},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	drop = "",
-	groups = {choppy=2,oddly_breakable_by_hand=2},
-	legacy_facedir_simple = true,
-	sounds = default.node_sound_wood_defaults(),
-	node_box = {
-		type = "fixed",
-		fixed = treasure_chest_nodebox,
-	},
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec",treasure_chest_formspec)
-		meta:set_string("infotext", "Treasure Chest Rank V")
-		local inv = meta:get_inventory()
-		inv:set_size("main", 32)
-		treasure_chest_populate(5, pos)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
-	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		glooptest.debug("ACTION", player:get_player_name().." moves items in R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		glooptest.debug("ACTION", player:get_player_name().." moves items in R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		glooptest.debug("ACTION", player:get_player_name().." takes items from R1 treasure chest at "..minetest.pos_to_string(pos)..".")
-	end,
-})
+for k, v in ipairs({"I", "II", "III", "IV", "V"}) do
+	minetest.register_node("glooptest:treasure_chest_"..k, {
+		description = S("Treasure Chest Rank @1", k),
+		drawtype = "nodebox",
+		tiles = {"default_chest_top.png", "default_chest_top.png", "default_chest_side.png",
+			"default_chest_side.png", "default_chest_side.png", "default_chest_front.png"},
+		paramtype = "light",
+		paramtype2 = "facedir",
+		drop = "",
+		groups = {choppy=2,oddly_breakable_by_hand=2},
+		legacy_facedir_simple = true,
+		sounds = default.node_sound_wood_defaults(),
+		node_box = {
+			type = "fixed",
+			fixed = treasure_chest_nodebox,
+		},
+		on_construct = function(pos)
+			local meta = minetest.get_meta(pos)
+			meta:set_string("formspec",treasure_chest_formspec)
+			meta:set_string("infotext", S("Treasure Chest Rank @1", v))
+			local inv = meta:get_inventory()
+			inv:set_size("main", 32)
+			treasure_chest_populate(k, pos)
+		end,
+		can_dig = function(pos,player)
+			local meta = minetest.get_meta(pos);
+			local inv = meta:get_inventory()
+			return inv:is_empty("main")
+		end,
+		on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
+			glooptest.debug("ACTION", player:get_player_name().." moves items in R"..k.." treasure chest at "..minetest.pos_to_string(pos)..".")
+		end,
+	    on_metadata_inventory_put = function(pos, listname, index, stack, player)
+			glooptest.debug("ACTION", player:get_player_name().." moves items in R"..k.." treasure chest at "..minetest.pos_to_string(pos)..".")
+		end,
+	    on_metadata_inventory_take = function(pos, listname, index, stack, player)
+			glooptest.debug("ACTION", player:get_player_name().." takes items from R"..k.." treasure chest at "..minetest.pos_to_string(pos)..".")
+		end,
+	})
+end
 
 minetest.register_on_generated(function(minp, maxp)
 	coords = {}
