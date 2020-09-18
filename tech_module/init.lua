@@ -1,5 +1,6 @@
 glooptest.tech_module = {}
 glooptest.debug("MESSAGE","Loading Tech Module Now!")
+local S = minetest.get_translator("glooptest")
 
 --dofile(minetest.get_modpath("glooptest").."/tech_module/api.lua")
 
@@ -25,7 +26,7 @@ end
 
 minetest.register_alias("glooptest:table", "glooptest:wooden_table")
 minetest.register_node("glooptest:wooden_table", {
-    description = "Wooden Table",
+    description = S("Wooden Table"),
     drawtype = "nodebox",
 	tiles = {"glooptest_table_tb.png","glooptest_table_tb.png","glooptest_table_side.png"},
 	paramtype = "light",
@@ -57,7 +58,7 @@ minetest.register_craft({
 })
 
 minetest.register_craftitem("glooptest:upgrade_core", {
-	description = "Upgrade Core",
+	description = S("Upgrade Core"),
 	inventory_image = "glooptest_upgrade_core.png",
 })
 
@@ -70,9 +71,9 @@ minetest.register_craft({
 	},
 })
 
-if LOAD_ORE_MODULE == true then
+if glooptest.modules.ore then
 	minetest.register_craftitem("glooptest:encrusting_upgrade", {
-		description = "Encrusting Upgrade",
+		description = S("Encrusting Upgrade"),
 		inventory_image = "glooptest_encrusting_upgrade.png",
 	})
 	

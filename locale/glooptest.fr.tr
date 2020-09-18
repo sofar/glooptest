@@ -1,0 +1,88 @@
+# textdomain: glooptest
+
+# License: CC-BY-SA-3.0
+# Author: Louis Royer <55180044+louisroyer@users.noreply.github.com>
+
+## Tools module
+### api
+handsaw=scie égoïne
+hammer=marteau
+
+### init
+Wooden Handsaw=Scie égoïne en Bois
+Wooden Hammer=Marteau en Bois
+Stone Handsaw=Scie égoïne en Pierre
+Stone Hammer=Marteau en Pierre
+Steel Handsaw=Scie égoïne en Acier
+Steel Hammer=Marteau en Acier
+Bronze Handsaw=Scie égoïne en Bronze
+Bronze Hammer=Marteau en Bronze
+Mese Handsaw=Scie égoïne en Mese
+Mese Hammer=Marteau en Mese
+Diamond Handsaw=Scie égoïne en Diamant
+Diamond Hammer=Marteau en Diamant
+
+## Ores
+Kalite Ore=Minerai de Kalite
+Kalite Lump=Morceau de Kalite
+Kalite Torch=Torche en Kalite
+Alatro Ore=Minerai d’Alatro
+Alatro Lump=Morceau d’Alatro
+Alatro Ingot=Lingot d’Alatro
+Alatro Block=Bloc d’Alatro
+Alatro Sword=Épée en Alatro
+Alatro Axe=Hache en Alatro
+Alatro Pickaxe=Pioche en Alatro
+Alatro Handsaw=Scie égoïne en Alatro
+Alatro Hammer=Marteau en Alatro
+Talinite Ore=Minerai de Talinite
+Talinite Lump=Morceau de Talinite
+Talinite Ingot=Lingot de Talinite
+Talinite Block=Bloc de Talinite
+Akalin Ore=Minerai d’Akalin
+Akalin Lump=Morceau d’Akalin
+Akalin Ingot=Lingot d’Akalin
+Akalin Block=Bloc d’Akalin
+Arol Ore=Minerai d’Arol
+Arol Lump=Morceau d’Arol
+Arol Ingot=Lingot d’Arol
+Arol Sword=Épée en Arol
+Arol Axe=Hache en Arol
+Arol Pickaxe=Pioche en Arol
+Arol Shovel=Pelle en Arol
+Arol Handsaw=Scie égoïne en Arol
+Arol Hammer=Marteau en Arol
+Desert Iron=Fer du désert
+Desert Coal=Charbon du désert
+Ruby Ore=Minerai de ruby
+Ruby Block=Bloc de ruby
+Ruby=Ruyb
+Sapphire Ore=Minerai de Saphire
+Sapphire Block=Bloc de Saphire
+Sapphire=Saphire
+Emerald Ore=Minerai d’émeraude
+Emerald Block=Bloc d’émeraude
+Emerald=Émeraude
+Topaz Ore=Minerai de Topaze
+Topaz Block=Bloc de Topaz.
+Topaz=Topaz.
+Amethyst Ore=Minerai d’Améthyste
+Amethyst Block=Bloc d’Améthyste
+Amethyst=Améthyste
+
+## othergen
+Treasure Chest Rank @1=Coffre au trésor rang @1
+
+## parts
+Crystal Glass=Verre de cristal
+Steel-Reinforced Crystal Glass=Verre de cristal renforcé avec de l’acier
+Akalin-Reinforced Crystal Glass=Verre de cristal renforcé avec de l’Akalin
+Heavily Reinforced Crystal Glass=Verre de cristal renforcé lourdement
+Alatro-Reinforced Crystal Glass=Verre de cristal renforcé avec de l’Alatro
+Arol-Reinforced Crystal Glass=Verre de cristal renforcé avec de l’Arol
+Talinite-Reinforced Crystal Glass=Verre de cristal renforcé avec de la Talinite
+
+## tech
+Wooden Table=Table en bois
+Upgrade Core=Noyau d’amélioration
+Encrusting Upgrade=Amélioration incrustée

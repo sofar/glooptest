@@ -1,0 +1,20 @@
+# This file adds minetests settings to control which modules load when GloopTest initiates.
+
+# Allow compatibility module to load. (Recommended with: Ore Module)
+# Diabling this means NO internal mod compatibility! (Other mods may add support for glooptest though)
+glooptest.load_compat_module (Enable glooptest compatibility module) bool true
+
+# Allow ore module to load.
+glooptest.load_ore_module (Enable glooptest ore module) bool true
+
+# Allow tools module to load. (Recommended with: Ore Module)
+glooptest.load_tools_module (Enable glooptest tools module) bool true
+
+# Allow parts module to load. (Recommended with: Ore Module)
+glooptest.load_parts_module (Enable glooptest parts module) bool true
+
+# Allow tech module to load. (Recommended with: Ore Module and Parts Module)
+glooptest.load_tech_module (Enable glooptest tech module) bool true
+
+# Allow othergen module to load. (Recommended with: Ore Module and Tools Module)
+glooptest.load_othergen_module (Enable glooptest ethergen module) bool true

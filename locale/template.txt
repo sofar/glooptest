@@ -1,0 +1,88 @@
+# textdomain: glooptest
+
+# License: CC-BY-SA-3.0
+# Author:
+
+## Tools module
+### api
+handsaw=
+hammer=
+
+### init
+Wooden Handsaw=
+Wooden Hammer=
+Stone Handsaw=
+Stone Hammer=
+Steel Handsaw=
+Steel Hammer=
+Bronze Handsaw=
+Bronze Hammer=
+Mese Handsaw=
+Mese Hammer=
+Diamond Handsaw=
+Diamond Hammer=
+
+## Ores
+Kalite Ore=
+Kalite Lump=
+Kalite Torch=
+Alatro Ore=
+Alatro Lump=
+Alatro Ingot=
+Alatro Block=
+Alatro Sword=
+Alatro Axe=
+Alatro Pickaxe=
+Alatro Handsaw=
+Alatro Hammer=
+Talinite Ore=
+Talinite Lump=
+Talinite Ingot=
+Talinite Block=
+Akalin Ore=
+Akalin Lump=
+Akalin Ingot=
+Akalin Block=
+Arol Ore=
+Arol Lump=
+Arol Ingot=
+Arol Sword=
+Arol Axe=
+Arol Pickaxe=
+Arol Shovel=
+Arol Handsaw=
+Arol Hammer=
+Desert Iron=
+Desert Coal=
+Ruby Ore=
+Ruby Block=
+Ruby=
+Sapphire Ore=
+Sapphire Block=
+Sapphire=
+Emerald Ore=
+Emerald Block=
+Emerald=
+Topaz Ore=
+Topaz Block=
+Topaz=
+Amethyst Ore=
+Amethyst Block=
+Amethyst=
+
+## othergen
+Treasure Chest Rank @1=
+
+## parts
+Crystal Glass=
+Steel-Reinforced Crystal Glass=
+Akalin-Reinforced Crystal Glass=
+Heavily Reinforced Crystal Glass=
+Alatro-Reinforced Crystal Glass=
+Arol-Reinforced Crystal Glass=
+Talinite-Reinforced Crystal Glass=
+
+## tech
+Wooden Table=
+Upgrade Core=
+Encrusting Upgrade=

@@ -1,8 +1,9 @@
 glooptest.parts_module = {}
 glooptest.debug("MESSAGE","Loading Parts Module Now!")
+local S = minetest.get_translator("glooptest")
 
 minetest.register_node("glooptest:crystal_glass", {
-	description = "Crystal Glass",
+	description = S("Crystal Glass"),
 	drawtype = "allfaces",
 	tiles = {"glooptest_crystal_glass.png"},
 	inventory_image = minetest.inventorycube("glooptest_crystal_glass.png"),
@@ -29,7 +30,7 @@ minetest.register_craft({
 })
 
 minetest.register_node("glooptest:reinforced_crystal_glass", {
-	description = "Steel-Reinforced Crystal Glass",
+	description = S("Steel-Reinforced Crystal Glass"),
 	drawtype = "allfaces",
 	tiles = {"glooptest_reinforced_crystal_glass.png"},
 	inventory_image = minetest.inventorycube("glooptest_reinforced_crystal_glass.png"),
@@ -48,10 +49,10 @@ minetest.register_craft({
 	}
 })
 
-if LOAD_ORE_MODULE == true then
+if glooptest.modules.ore then
 
 	minetest.register_node("glooptest:akalin_crystal_glass", {
-		description = "Akalin-Reinforced Crystal Glass",
+		description = S("Akalin-Reinforced Crystal Glass"),
 		drawtype = "allfaces",
 		tiles = {"glooptest_akalin_crystal_glass.png"},
 		inventory_image = minetest.inventorycube("glooptest_akalin_crystal_glass.png"),
@@ -71,7 +72,7 @@ if LOAD_ORE_MODULE == true then
 	})
 	
 	minetest.register_node("glooptest:heavy_crystal_glass", {
-		description = "Heavily Reinforced Crystal Glass",
+		description = S("Heavily Reinforced Crystal Glass"),
 		drawtype = "allfaces",
 		tiles = {"glooptest_reinforced_akalin_crystal_glass.png"},
 		inventory_image = minetest.inventorycube("glooptest_reinforced_akalin_crystal_glass.png"),
@@ -98,7 +99,7 @@ if LOAD_ORE_MODULE == true then
 	})
 	
 	minetest.register_node("glooptest:alatro_crystal_glass", {
-		description = "Alatro-Reinforced Crystal Glass",
+		description = S("Alatro-Reinforced Crystal Glass"),
 		drawtype = "allfaces",
 		tiles = {"glooptest_alatro_crystal_glass.png"},
 		use_texture_alpha = true,
@@ -118,7 +119,7 @@ if LOAD_ORE_MODULE == true then
 	})
 
 	minetest.register_node("glooptest:arol_crystal_glass", {
-		description = "Arol-Reinforced Crystal Glass",
+		description = S("Arol-Reinforced Crystal Glass"),
 		drawtype = "allfaces",
 		tiles = {"glooptest_arol_crystal_glass.png"},
 		inventory_image = minetest.inventorycube("glooptest_arol_crystal_glass.png"),
@@ -138,7 +139,7 @@ if LOAD_ORE_MODULE == true then
 	})
 	
 	minetest.register_node("glooptest:talinite_crystal_glass", {
-		description = "Talinite-Reinforced Crystal Glass",
+		description = S("Talinite-Reinforced Crystal Glass"),
 		drawtype = "allfaces",
 		tiles = {"glooptest_talinite_crystal_glass.png"},
 		inventory_image = minetest.inventorycube("glooptest_talinite_crystal_glass.png"),

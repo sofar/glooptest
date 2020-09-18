@@ -1,5 +1,5 @@
 -- GloopTest general initiation file.
--- To edit what modules will load, please edit module.cfg which can be found in the same folder as this file.
+-- To edit what modules will load, please edit minetest.conf file.
 --
 -- GloopTest random data:
 --    Version                             : 0.0.4a
@@ -9,50 +9,56 @@
 --    Totals: lol I don't know
 -- End random data.
 
--- Open configuration files.
-dofile(minetest.get_modpath("glooptest").."/general.cfg")
-dofile(minetest.get_modpath("glooptest").."/module.cfg")
-
 -- Set up some variables and crap.
 local modules_loaded = 0
 glooptest = {}
+
+-- export which modules are loaded
+glooptest.modules = {
+	compat = minetest.settings:get_bool("glooptest.load_compat_module", true),
+	ore = minetest.settings:get_bool("glooptest.load_ore_module", true),
+	tools = minetest.settings:get_bool("glooptest.load_tools_module", true),
+	parts = minetest.settings:get_bool("glooptest.load_parts_module", true),
+	tech = minetest.settings:get_bool("glooptest.load_module", true),
+	othergen = minetest.settings:get_bool("glooptest.load_module", true),
+}
 
 -- Set up some general functions for random crap.
 function glooptest.debug(level,message)
 	print("["..level.."][GloopTest v0.0.4a] "..message)
 end
 
-if LOAD_ORE_MODULE == true then
+if glooptest.modules.ore then
 	dofile(minetest.get_modpath("glooptest").."/ore_module/init.lua")
 	local modulecount = modules_loaded
 	modules_loaded = modulecount+1
 end
 
-if LOAD_TOOLS_MODULE == true then
+if glooptest.modules.tools then
 	dofile(minetest.get_modpath("glooptest").."/tools_module/init.lua")
 	local modulecount = modules_loaded
 	modules_loaded = modulecount+1
 end
 
-if LOAD_PARTS_MODULE == true then
+if glooptest.modules.parts then
 	dofile(minetest.get_modpath("glooptest").."/parts_module/init.lua")
 	local modulecount = modules_loaded
 	modules_loaded = modulecount+1
 end
 
-if LOAD_TECH_MODULE == true then
+if glooptest.modules.tech then
 	dofile(minetest.get_modpath("glooptest").."/tech_module/init.lua")
 	local modulecount = modules_loaded
 	modules_loaded = modulecount+1
 end
 
-if LOAD_OTHERGEN_MODULE == true then
+if glooptest.modules.othergen then
 	dofile(minetest.get_modpath("glooptest").."/othergen_module/init.lua")
 	local modulecount = modules_loaded
 	modules_loaded = modulecount+1
 end
 
-if LOAD_COMPAT_MODULE == true then
+if glooptest.modules.compat then
 	dofile(minetest.get_modpath("glooptest").."/compat_module/init.lua")
 	local modulecount = modules_loaded
 	modules_loaded = modulecount+1
